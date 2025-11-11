@@ -68,22 +68,8 @@ src/
 ## ⚙️ Generate Components Quickly
 
 ```bash
-ng g c lessons/pages/project-structure
-ng g c lessons/pages/components-lifecycle
-ng g c lessons/pages/binding-events
-ng g c lessons/pages/signals
-ng g c lessons/pages/control-flow
-ng g c lessons/pages/attribute-directives
-ng g c lessons/pages/routing
-ng g c lessons/pages/template-forms
-ng g c lessons/pages/reactive-forms
-ng g c lessons/pages/http-crud
-ng g c lessons/pages/services
-ng g c lessons/pages/resource-api
-ng g c lessons/pages/pipes
-ng g c lessons/pages/login-guard
-ng g c lessons/pages/interceptor
-ng g c lessons/pages/input-output
+ng g c Component-Name
+
 ```
 
 ---
