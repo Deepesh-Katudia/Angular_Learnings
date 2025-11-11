@@ -1,59 +1,212 @@
-# AngluarLearning
+# 🌟 Angular Learning Lab
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0.
+A hands-on Angular repository where **each concept is represented by its own component**.  
+This project is designed to help you **learn Angular step-by-step**, from fundamentals to advanced concepts — all inside one running app.
 
-## Development server
+> Target: Angular 16+ (includes **Signals**, **new control flow syntax**, and modern best practices)
 
-To start a local development server, run:
+---
+
+## 🚀 Quick Start
 
 ```bash
+# 1. Install Angular CLI
+npm install -g @angular/cli
+
+# 2. Create or clone the repo
+ng new angular-learning-lab --routing --style=scss
+cd angular-learning-lab
+
+# 3. Start the dev server
+npm start
+# or
 ng serve
+````
+
+Open your browser at [http://localhost:4200](http://localhost:4200)
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+  app/
+    core/             # Singleton services, interceptors, guards
+    shared/           # Reusable UI, pipes, and directives
+    lessons/          # Each Angular concept as a separate component
+      components/
+      pages/
+      lessons-routing.module.ts
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🧠 Lessons Overview
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+ | Component                     | Concept                                                               |
+ | ----------------------------- | --------------------------------------------------------------------- |
+ | ProjectStructurePageComponent | Angular workspace setup, modules, folder organization                 |
+ | LifecycleDemoComponent        | Component creation, lifecycle hooks (`ngOnInit`, `ngOnChanges`, etc.) |
+ | BindingEventsComponent        | Data binding, event handling, two-way binding with `ngModel`          |
+ | SignalsDemoComponent          | `signal`, `computed`, and `effect` for state management               |
+ | ControlFlowComponent          | New `@if`, `@for`, `@switch`, and `track` syntax                      |
+ | AttributeDirectivesComponent  | `ngClass`, `ngStyle`, and custom directives                           |
+ | RoutingBasicsPageComponent    | Routing, lazy loading, params, and navigation                         |
+ | TemplateFormComponent         | Template-driven forms and validation                                  |
+ | ReactiveFormComponent         | Reactive forms, `FormBuilder`, custom validators                      |
+ | HttpCrudComponent             | CRUD operations with `HttpClient` and interceptors                    |
+ | ServicesDemoComponent         | Dependency Injection, shared services                                 |
+ | ResourceApiComponent          | API layer, DTO mapping, reusable service patterns                     |
+ | PipesDemoComponent            | Built-in and custom pipes                                             |
+ | LoginGuardPageComponent       | Route guards and protected routes                                     |
+ | InterceptorDemoComponent      | Auth interceptors, global error handling                              |
+ | InputOutputComponent          | Parent-child communication using `@Input` and `@Output`               |
+
+---
+
+## ⚙️ Generate Components Quickly
 
 ```bash
-ng generate component component-name
+ng g c lessons/pages/project-structure
+ng g c lessons/pages/components-lifecycle
+ng g c lessons/pages/binding-events
+ng g c lessons/pages/signals
+ng g c lessons/pages/control-flow
+ng g c lessons/pages/attribute-directives
+ng g c lessons/pages/routing
+ng g c lessons/pages/template-forms
+ng g c lessons/pages/reactive-forms
+ng g c lessons/pages/http-crud
+ng g c lessons/pages/services
+ng g c lessons/pages/resource-api
+ng g c lessons/pages/pipes
+ng g c lessons/pages/login-guard
+ng g c lessons/pages/interceptor
+ng g c lessons/pages/input-output
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## 🧩 Example Routing Setup
+
+`src/app/lessons/lessons-routing.module.ts`
+
+```typescript
+const routes: Routes = [
+  { path: '', redirectTo: 'project-structure', pathMatch: 'full' },
+  { path: 'project-structure', component: ProjectStructurePageComponent },
+  { path: 'components-lifecycle', component: LifecycleDemoComponent },
+  { path: 'binding-events', component: BindingEventsComponent },
+  { path: 'signals', component: SignalsDemoComponent },
+  { path: 'control-flow', component: ControlFlowComponent },
+  { path: 'attribute-directives', component: AttributeDirectivesComponent },
+  { path: 'routing', component: RoutingBasicsPageComponent },
+  { path: 'template-forms', component: TemplateFormComponent },
+  { path: 'reactive-forms', component: ReactiveFormComponent },
+  { path: 'http-crud', component: HttpCrudComponent },
+  { path: 'services', component: ServicesDemoComponent },
+  { path: 'resource-api', component: ResourceApiComponent },
+  { path: 'pipes', component: PipesDemoComponent },
+  { path: 'login-guard', component: LoginGuardPageComponent },
+  { path: 'interceptor', component: InterceptorDemoComponent },
+  { path: 'input-output', component: InputOutputComponent },
+];
 ```
 
-## Building
+---
 
-To build the project run:
+## 🧱 Code Snippets
 
-```bash
-ng build
+### Signals
+
+```typescript
+count = signal(0);
+double = computed(() => this.count() * 2);
+
+ngOnInit() {
+  effect(() => console.log('count changed:', this.count()));
+}
+
+increment() {
+  this.count.update(v => v + 1);
+}
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Control Flow
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```html
+@for (user of users(); track user.id) {
+  <app-user-card [user]="user"></app-user-card>
+} @empty {
+  <p>No users found</p>
+}
 ```
 
-## Running end-to-end tests
+### Reactive Form
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```typescript
+form = this.fb.group({
+  email: ['', [Validators.required, Validators.email]],
+  password: ['', [Validators.required, Validators.minLength(8)]],
+});
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### HTTP CRUD
 
-## Additional Resources
+```typescript
+getTodos() {
+  return this.http.get<Todo[]>('/api/todos').pipe(retry(1));
+}
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 🧪 Suggested Exercises
+
+* Add a **loading state** to `http-crud` using the `@defer` block
+* Replace event bindings with **Signals** where possible
+* Create a **custom validator** for password strength
+* Add a **CanDeactivate guard** for unsaved form changes
+* Implement a **repository pattern** in `resource-api`
+* Add a **lazy-loaded Admin module** to practice routing
+
+---
+
+## 🧰 Useful Scripts
+
+```json
+{
+  "scripts": {
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\""
+  }
+}
+```
+
+---
+
+## 🤝 Contributing
+
+* Keep each concept in its own self-contained component
+* Add comments or markdown blocks explaining key ideas
+* Store reusable utilities in `/shared`
+* Keep services stateless and inject with `providedIn: 'root'`
+
+---
+
+## 🪪 License
+
+**MIT License** — free to use, learn, and modify.
+
+---
+
+### 🌱 Learn, Experiment, and Build
+
+Each lesson in this project is designed for experimentation — tweak the code, break it, fix it, and learn how Angular works under the hood.
+Happy coding! 🚀
+
+```
