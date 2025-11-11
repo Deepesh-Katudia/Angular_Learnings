@@ -1,0 +1,50 @@
+<div class="row" ngClass="themeClass">
+    <div class="table" >
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Sr no
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        city name 
+                    </th>
+                    <th>
+                        status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of studentList; track $index) {
+                <tr >
+                    <td [ngClass]="item.status == true ? 'bg-success' : 'bg-danger'" >{{$index+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td [class]="item.status == true ? 'bg-success':'bg-danger'">{{item.city}}</td>
+                    <td>{{item.status}}</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div [class]="'col-5 ' + themeClass">
+       <h2>Hello</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div [ngStyle]="{color:textColor, 'font-size.px':30, 'background-color':'blue'}">
+       <h2>Deepesh Katudia</h2>
+    </div>
+</div>
+<br><br>
+<div class="row">
+    <div class="col-6" [ngStyle]="myCss">
+        <h2>Hello to Dynamic CSS by creating new variable </h2>
+    </div>
+</div>
