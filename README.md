@@ -1,4 +1,4 @@
-# 🌟 Angular Learning Lab
+# 🌟 Angular Learnings
 
 A hands-on Angular repository where **each concept is represented by its own component**.  
 This project is designed to help you **learn Angular step-by-step**, from fundamentals to advanced concepts — all inside one running app.
